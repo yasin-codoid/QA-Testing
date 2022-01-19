@@ -9,13 +9,13 @@
 
 #Enable IE mode in Edge Browser in selenium JAVA code.
 
-**Code:**
+**Code:**   -   **Selenium 3.141.59 Version**
 
         System.setProperty("webdriver.ie.driver", <<IE-Driver-Path>>);
         InternetExplorerOptions edgeIe11Options = new InternetExplorerOptions();
         Map<String, Object> ops = (Map<String, Object>) edgeIe11Options.getCapability("se:ieOptions");
         ops.put("ie.edgechromium", true);
-        ops.put("ie.edgepath", "msedge.exe");     // _Edge Browser directory path_
+        ops.put("ie.edgepath", "msedge.exe");     // Edge Browser directory path
  
         edgeIe11Options.introduceFlakinessByIgnoringSecurityDomains();
         edgeIe11Options.ignoreZoomSettings();
@@ -32,6 +32,25 @@
         driver = new InternetExplorerDriver(edgeIe11Options);
         wait = new WebDriverWait(driver, 25);
         driver.get("https://github.com/");
+        driver.close();
+
+-----------------------------------------------------------------------
+**Code - Selenium 4** :
+
+        System.setProperty("webdriver.ie.driver", <<IE-Driver-Path>>);
+        
+        InternetExplorerOptions ieOptions = new InternetExplorerOptions();
+        ieOptions.attachToEdgeChrome();
+        ieOptions.withEdgeExecutablePath("msedge.exe");     // Edge Browser directory path
+        
+        WebDriver driver = new InternetExplorerDriver(ieOptions);
+
+        driver.get("https://github.com/");      
+        driver.close();
+
+
+
+
 
 
 
